@@ -1,0 +1,42 @@
+CREATE TABLE persons (
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  city VARCHAR(50),
+  age INT,
+  CONSTRAINT age_check CHECK (age < 21)
+);
+
+select * from persons;
+
+INSERT INTO persons (first_name, last_name, city, age)
+VALUES
+  ('John', 'Doe', 'Mumbai', 20),
+  ('Jane', 'Smith', 'Delhi', 18),
+  ('Peter', 'Jones', 'Bangalore', 19),
+  ('Alice', 'Brown', 'Kolkata', 17);
+
+  select * from persons;
+
+INSERT INTO persons (first_name, last_name, city, age)
+VALUES ('Bob', 'Johnson', 'Chennai', 25);
+
+select * from persons;
+
+ALTER TABLE persons
+ADD CONSTRAINT city_check CHECK (city = 'Mumbai');
+
+INSERT INTO persons (first_name, last_name, city, age)
+VALUES ('Mike', 'Miller', 'Jaipur', 18);
+
+select * from persons;
+
+ALTER TABLE persons
+DROP CONSTRAINT age_check;
+
+ALTER TABLE persons
+DROP CONSTRAINT city_check;
+
+CREATE VIEW mumbai_persons AS
+SELECT * FROM persons WHERE city = 'Mumbai';
+
+select * from persons;
